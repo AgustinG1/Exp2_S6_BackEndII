@@ -25,7 +25,7 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
         );
 
-        String token = jwtUtil.generateToken(auth.getName()); // Asumiendo que tu JwtUtil tiene este método
+        String token = jwtUtil.generateToken(auth.getName());
         return ResponseEntity.ok(token);
     }
 }

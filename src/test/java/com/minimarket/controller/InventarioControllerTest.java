@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(InventarioController.class)
-@Import({SecurityConfig.class, com.minimarket.security.config.JwtRequestFilter.class}) // Importamos tu configuración de seguridad real
+@Import({SecurityConfig.class, com.minimarket.security.config.JwtRequestFilter.class}) // Importamos la configuración de seguridad
 class InventarioControllerTest {
 
     @Autowired
@@ -31,7 +31,7 @@ class InventarioControllerTest {
     private InventarioService inventarioService;
 
     @MockBean
-    private CustomUserDetailsService customUserDetailsService; // Necesario para que SecurityConfig no falle
+    private CustomUserDetailsService customUserDetailsService;
 
     @MockBean
     private com.minimarket.security.util.JwtUtil jwtUtil; // Dependencia para JwtRequestFilter
@@ -59,7 +59,7 @@ class InventarioControllerTest {
         mockMvc.perform(post("/api/inventario").with(csrf())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(movimientoMock)))
-                .andExpect(status().isOk()); // o isCreated() dependiendo de controller
+                .andExpect(status().isOk());
     }
     
     // ESCENARIO DE ERROR: Cajero/Cliente intenta registrar movimiento

@@ -116,7 +116,7 @@ class ProductoControllerTest {
                 .andExpect(status().isForbidden()); 
     }
 
-    // 🔴 ESCENARIO DE ERROR: Usuario no autenticado (sin token/sesión)
+    // ESCENARIO DE ERROR: Usuario no autenticado (sin token/sesion)
     @Test
     void cuandoUsuarioNoEstaAutenticado_entoncesBloqueaAcceso_devuelve401() throws Exception {
         mockMvc.perform(put("/api/productos/1").with(csrf())
